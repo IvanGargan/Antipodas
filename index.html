@@ -33,7 +33,6 @@
     <script>
       require([
         "esri/map",
-        "esri/geometry/Point",
         "esri/geometry/Extent", 
         "dojo/domReady!"
         ], 
@@ -50,7 +49,10 @@
             center: [-122.45, 37.75],
             zoom: 13
           });
-          var Point;
+          map.on("extent-change", function(change){
+            var center = change.extent.getCenter();
+            map2.centerAt(center)
+          });
         });
     </script>
   </head>
